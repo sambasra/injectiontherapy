@@ -17,18 +17,18 @@ export default function FAQSection({ items, title = 'Frequently Asked Questions'
 
   return (
     <section className="py-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">{title}</h2>
-      <div className="space-y-3">
+      <h2 className="text-2xl font-medium text-[#172026] mb-6">{title}</h2>
+      <div className="space-y-2">
         {items.map((item, i) => (
-          <div key={i} className="border border-gray-200 rounded-lg overflow-hidden">
+          <div key={i} className="bg-white border border-[#E7EEF2] rounded-lg overflow-hidden">
             <button
-              className="w-full text-left px-5 py-4 font-medium text-gray-800 hover:bg-gray-50 flex justify-between items-center"
+              className="w-full text-left px-5 py-4 font-medium text-[#172026] hover:bg-[#F7FAFC] flex justify-between items-center transition-colors"
               onClick={() => setOpen(open === i ? null : i)}
               aria-expanded={open === i}
             >
-              {item.question}
+              <span className="text-sm">{item.question}</span>
               <svg
-                className={`w-5 h-5 text-gray-400 flex-shrink-0 ml-4 transition-transform ${open === i ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 text-gray-400 flex-shrink-0 ml-4 transition-transform ${open === i ? 'rotate-180' : ''}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -37,7 +37,7 @@ export default function FAQSection({ items, title = 'Frequently Asked Questions'
               </svg>
             </button>
             {open === i && (
-              <div className="px-5 pb-4 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
+              <div className="px-5 pb-4 text-sm text-gray-600 leading-relaxed border-t border-[#E7EEF2] pt-3">
                 {item.answer}
               </div>
             )}

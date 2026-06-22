@@ -54,7 +54,7 @@ const facts = [
 
 export default function GLP1InjectionsPage() {
   return (
-    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-gray-600">Home</Link>
         <span className="mx-2">/</span>
@@ -65,7 +65,7 @@ export default function GLP1InjectionsPage() {
 
       <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal text-[#172026] mb-4">
             GLP-1 Injections: How They Work, What They Cost, and How to Access Them
           </h1>
           <p className="text-lg text-gray-500 mb-2">Last updated: June 2025</p>
@@ -80,7 +80,7 @@ export default function GLP1InjectionsPage() {
               evidence actually shows and what you should know before pursuing a program.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">How GLP-1 Medications Work</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">How GLP-1 Medications Work</h2>
             <p>
               GLP-1 (glucagon-like peptide-1) is a hormone naturally produced in the gut after
               eating. GLP-1 receptor agonists mimic this hormone, producing several effects:
@@ -100,7 +100,7 @@ export default function GLP1InjectionsPage() {
               at least one weight-related condition.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">GLP-1 Cost: What You Can Actually Expect to Pay</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">GLP-1 Cost: What You Can Actually Expect to Pay</h2>
             <p>
               Cost is the biggest practical barrier for most people. Here is a realistic breakdown:
             </p>
@@ -110,7 +110,7 @@ export default function GLP1InjectionsPage() {
               <li><strong>With insurance or manufacturer coupons:</strong> Some plans cover GLP-1s for obesity; manufacturer savings programs can reduce brand-name costs significantly for commercially insured patients.</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">What to Ask Your Provider</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">What to Ask Your Provider</h2>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
               <li>Am I a candidate based on my BMI and medical history?</li>
               <li>Which medication is right for my situation, and why?</li>
@@ -135,7 +135,7 @@ export default function GLP1InjectionsPage() {
 
         <aside className="mt-8 lg:mt-0 space-y-6">
           <QuickFactsBox facts={facts} title="GLP-1 Quick Facts" />
-          <div className="bg-amber-50 border border-amber-200 rounded-[10px] p-5">
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-5">
             <h3 className="font-semibold text-amber-800 mb-2 text-sm">Important Note on Compounded GLP-1s</h3>
             <p className="text-xs text-amber-700 leading-relaxed">
               The FDA has warned about some compounded semaglutide products. Always verify your
@@ -143,12 +143,12 @@ export default function GLP1InjectionsPage() {
               will provide this information voluntarily.
             </p>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-[10px] p-5">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
             <h3 className="font-semibold text-gray-800 mb-3 text-sm">Related Injection Types</h3>
             <ul className="space-y-2">
-              <li><Link href="/b12-injections/" className="text-sm text-brand-600 hover:underline">B12 Injections</Link></li>
-              <li><Link href="/lipotropic-injections/" className="text-sm text-brand-600 hover:underline">Lipotropic (MIC) Injections</Link></li>
-              <li><Link href="/sermorelin-injections/" className="text-sm text-brand-600 hover:underline">Sermorelin Injections</Link></li>
+              <li><Link href="/b12-injections/" className="text-sm text-brand-500 hover:underline">B12 Injections</Link></li>
+              <li><Link href="/lipotropic-injections/" className="text-sm text-brand-500 hover:underline">Lipotropic (MIC) Injections</Link></li>
+              <li><Link href="/sermorelin-injections/" className="text-sm text-brand-500 hover:underline">Sermorelin Injections</Link></li>
             </ul>
           </div>
         </aside>

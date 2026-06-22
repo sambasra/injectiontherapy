@@ -14,9 +14,9 @@ export default async function SettingsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Settings</h1>
+      <h1 className="text-2xl font-medium text-[#172026] mb-6">Settings</h1>
 
-      <div className="bg-white border border-gray-200 rounded-[10px] p-6 max-w-[600px] space-y-6">
+      <div className="bg-white border border-[#E7EEF2] rounded-lg p-6 max-w-[600px] space-y-6">
         <div>
           <h2 className="text-sm font-semibold text-gray-700 mb-3">Account</h2>
           <div className="space-y-1 text-sm text-gray-500">

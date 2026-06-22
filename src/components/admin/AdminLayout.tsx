@@ -5,14 +5,14 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
 const navItems = [
-  { label: 'Dashboard', href: '/admin', icon: '📊' },
-  { label: 'Offers', href: '/admin/offers', icon: '🔗' },
-  { label: 'Clicks', href: '/admin/clicks', icon: '📈' },
-  { label: 'Conversions', href: '/admin/conversions', icon: '💰' },
-  { label: 'Pages', href: '/admin/pages', icon: '📄' },
-  { label: 'Campaigns', href: '/admin/campaigns', icon: '🎯' },
-  { label: 'Sites', href: '/admin/sites', icon: '🌐' },
-  { label: 'Settings', href: '/admin/settings', icon: '⚙️' },
+  { label: 'Dashboard',   href: '/admin',              icon: '▣' },
+  { label: 'Offers',      href: '/admin/offers',        icon: '⊞' },
+  { label: 'Clicks',      href: '/admin/clicks',        icon: '↗' },
+  { label: 'Conversions', href: '/admin/conversions',   icon: '$' },
+  { label: 'Pages',       href: '/admin/pages',         icon: '≡' },
+  { label: 'Campaigns',   href: '/admin/campaigns',     icon: '◎' },
+  { label: 'Sites',       href: '/admin/sites',         icon: '⊕' },
+  { label: 'Settings',    href: '/admin/settings',      icon: '⚙' },
 ]
 
 export default function AdminLayoutClient({ children }: { children: React.ReactNode }) {
@@ -23,12 +23,12 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-[#F7FAFC] flex">
       {/* Sidebar */}
-      <aside className="w-56 bg-white border-r border-gray-200 flex flex-col fixed top-0 left-0 bottom-0 z-40">
-        <div className="h-14 flex items-center px-5 border-b border-gray-100">
-          <Link href="/admin" className="font-bold text-gray-900 text-sm">
-            IT Admin
+      <aside className="w-56 bg-white border-r border-[#E7EEF2] flex flex-col fixed top-0 left-0 bottom-0 z-40">
+        <div className="h-14 flex items-center px-5 border-b border-[#E7EEF2]">
+          <Link href="/admin" className="font-medium text-[#172026] text-sm">
+            <span className="text-brand-500">IT</span> Admin
           </Link>
         </div>
         <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
@@ -43,31 +43,31 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                 className={cn(
                   'flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors',
                   isActive
-                    ? 'bg-brand-50 text-brand-700 font-semibold'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'bg-brand-50 text-brand-600 font-medium'
+                    : 'text-gray-500 hover:text-[#172026] hover:bg-[#F7FAFC]'
                 )}
               >
-                <span>{item.icon}</span>
+                <span className="text-xs w-4 text-center">{item.icon}</span>
                 {item.label}
               </Link>
             )
           })}
         </nav>
-        <div className="p-3 border-t border-gray-100">
+        <div className="p-3 border-t border-[#E7EEF2]">
           <form action="/api/auth/logout" method="post">
             <button
               type="submit"
-              className="w-full text-left px-3 py-2 text-sm text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 flex items-center gap-2"
+              className="w-full text-left px-3 py-2 text-sm text-gray-400 hover:text-[#172026] rounded-lg hover:bg-[#F7FAFC] flex items-center gap-2 transition-colors"
             >
-              <span>🚪</span> Log out
+              <span className="text-xs w-4 text-center">←</span> Log out
             </button>
           </form>
           <Link
             href="/"
-            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 mt-0.5"
+            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-400 hover:text-[#172026] rounded-lg hover:bg-[#F7FAFC] mt-0.5 transition-colors"
             target="_blank"
           >
-            <span>🌐</span> View Site
+            <span className="text-xs w-4 text-center">↗</span> View Site
           </Link>
         </div>
       </aside>

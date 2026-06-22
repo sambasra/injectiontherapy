@@ -53,7 +53,7 @@ const facts = [
 
 export default function B12InjectionsPage() {
   return (
-    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-gray-600">Home</Link>
@@ -66,7 +66,7 @@ export default function B12InjectionsPage() {
       <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
         {/* Main content */}
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal text-[#172026] mb-4">
             B12 Injections: What They Are, Who Needs Them, and What They Cost
           </h1>
           <p className="text-lg text-gray-500 mb-2">Last updated: June 2025</p>
@@ -85,7 +85,7 @@ export default function B12InjectionsPage() {
               realistic cost ranges, and what to look for in a provider or online program.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">What Is Vitamin B12 and Why Inject It?</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">What Is Vitamin B12 and Why Inject It?</h2>
             <p>
               Vitamin B12 (cobalamin) is an essential nutrient involved in red blood cell formation,
               neurological function, and DNA synthesis. According to the{' '}
@@ -102,7 +102,7 @@ export default function B12InjectionsPage() {
               An injection bypasses this entirely.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">Who May Benefit From B12 Injections?</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">Who May Benefit From B12 Injections?</h2>
             <p>
               B12 deficiency is more common than many people realize. The following groups are at
               higher risk, according to NIH and Mayo Clinic:
@@ -122,7 +122,7 @@ export default function B12InjectionsPage() {
               any B12 program.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">B12 Injection Cost: What to Expect</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">B12 Injection Cost: What to Expect</h2>
             <p>
               Cost varies significantly depending on whether you go in-office or use an online
               telehealth program:
@@ -133,7 +133,7 @@ export default function B12InjectionsPage() {
               <li><strong>With insurance:</strong> Often covered when deficiency is medically documented. Check your plan.</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">What to Ask Your Provider</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">What to Ask Your Provider</h2>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
               <li>Should I get a blood test first to confirm deficiency?</li>
               <li>Which form of B12 is best for my situation — cyanocobalamin or methylcobalamin?</li>
@@ -160,13 +160,13 @@ export default function B12InjectionsPage() {
         <aside className="mt-8 lg:mt-0 space-y-6">
           <QuickFactsBox facts={facts} title="B12 Injection Quick Facts" />
 
-          <div className="bg-gray-50 border border-gray-200 rounded-[10px] p-5">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
             <h3 className="font-semibold text-gray-800 mb-3 text-sm">Related Injection Types</h3>
             <ul className="space-y-2">
-              <li><Link href="/glp1-injections/" className="text-sm text-brand-600 hover:underline">GLP-1 Injections</Link></li>
-              <li><Link href="/nad-injections/" className="text-sm text-brand-600 hover:underline">NAD+ Injections</Link></li>
-              <li><Link href="/lipotropic-injections/" className="text-sm text-brand-600 hover:underline">Lipotropic (MIC) Injections</Link></li>
-              <li><Link href="/glutathione-injections/" className="text-sm text-brand-600 hover:underline">Glutathione Injections</Link></li>
+              <li><Link href="/glp1-injections/" className="text-sm text-brand-500 hover:underline">GLP-1 Injections</Link></li>
+              <li><Link href="/nad-injections/" className="text-sm text-brand-500 hover:underline">NAD+ Injections</Link></li>
+              <li><Link href="/lipotropic-injections/" className="text-sm text-brand-500 hover:underline">Lipotropic (MIC) Injections</Link></li>
+              <li><Link href="/glutathione-injections/" className="text-sm text-brand-500 hover:underline">Glutathione Injections</Link></li>
             </ul>
           </div>
         </aside>

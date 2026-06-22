@@ -7,12 +7,12 @@ interface DisclaimerBoxProps {
 
 export default function DisclaimerBox({ type = 'both', className = '' }: DisclaimerBoxProps) {
   return (
-    <div className={`bg-amber-50 border border-amber-200 rounded-lg px-5 py-4 text-sm text-amber-900 leading-relaxed ${className}`}>
+    <div className={`bg-white border border-[#E7EEF2] border-l-4 border-l-brand-500 rounded-lg px-5 py-4 text-sm text-[#172026] leading-relaxed ${className}`}>
       {(type === 'affiliate' || type === 'both') && (
         <p className="mb-1">
-          <strong>Affiliate Disclosure:</strong> Some links on this page are affiliate links. If you click and
+          <strong className="font-medium">Affiliate Disclosure:</strong> Some links on this page are affiliate links. If you click and
           purchase through them, we may earn a commission at no additional cost to you.{' '}
-          <Link href="/affiliate-disclosure/" className="underline hover:text-amber-700">
+          <Link href="/affiliate-disclosure/" className="text-brand-500 underline hover:text-brand-600">
             Learn more
           </Link>
           .
@@ -20,9 +20,9 @@ export default function DisclaimerBox({ type = 'both', className = '' }: Disclai
       )}
       {(type === 'medical' || type === 'both') && (
         <p>
-          <strong>Medical Disclaimer:</strong> This content is for educational purposes only and does not
+          <strong className="font-medium">Medical Disclaimer:</strong> This content is for educational purposes only and does not
           constitute medical advice. Consult a qualified healthcare provider before beginning any treatment.{' '}
-          <Link href="/medical-disclaimer/" className="underline hover:text-amber-700">
+          <Link href="/medical-disclaimer/" className="text-brand-500 underline hover:text-brand-600">
             Full disclaimer
           </Link>
           .

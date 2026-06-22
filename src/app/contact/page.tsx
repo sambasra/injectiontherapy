@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-gray-600">Home</Link>
         <span className="mx-2">/</span>

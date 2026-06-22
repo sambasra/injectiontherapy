@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-gray-600">Home</Link>
         <span className="mx-2">/</span>
@@ -18,7 +18,7 @@ export default function AboutPage() {
       </nav>
 
       <div className="max-w-[780px]">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+        <h1 className="text-3xl sm:text-4xl font-normal text-[#172026] mb-6">
           About InjectionTherapy.org
         </h1>
 
@@ -29,7 +29,7 @@ export default function AboutPage() {
             and Testosterone programs. We are not a healthcare provider, a clinic, or a pharmacy.
           </p>
 
-          <h2 className="text-xl font-bold text-gray-900">What We Do</h2>
+          <h2 className="text-xl font-medium text-[#172026]">What We Do</h2>
           <p>
             We research and publish educational content to help people understand what different
             injection therapies are, what the current evidence shows, what realistic costs look
@@ -42,7 +42,7 @@ export default function AboutPage() {
             what the evidence supports.
           </p>
 
-          <h2 className="text-xl font-bold text-gray-900">How We Make Money</h2>
+          <h2 className="text-xl font-medium text-[#172026]">How We Make Money</h2>
           <p>
             This site uses affiliate links. When we link to a telehealth program or clinic, and
             you choose to purchase through that link, we may earn a commission at no additional
@@ -54,7 +54,7 @@ export default function AboutPage() {
             every page where they appear.
           </p>
 
-          <h2 className="text-xl font-bold text-gray-900">Medical Disclaimer</h2>
+          <h2 className="text-xl font-medium text-[#172026]">Medical Disclaimer</h2>
           <p>
             This website is for educational purposes only and does not provide medical advice.
             Nothing on this site constitutes a diagnosis, treatment plan, or recommendation for
@@ -62,7 +62,7 @@ export default function AboutPage() {
             any injection therapy or changing your treatment plan.
           </p>
 
-          <h2 className="text-xl font-bold text-gray-900">Content Standards</h2>
+          <h2 className="text-xl font-medium text-[#172026]">Content Standards</h2>
           <p>
             We aim to be an example of how a medical-adjacent affiliate site should operate:
             balanced, cited, honest about what the evidence does and does not show, and compliant

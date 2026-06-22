@@ -30,18 +30,18 @@ export default async function OffersPage() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Offers</h1>
+        <h1 className="text-2xl font-medium text-[#172026]">Offers</h1>
         <Link
           href="/admin/offers/new"
-          className="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+          className="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
         >
           + New Offer
         </Link>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-[10px] overflow-hidden">
+      <div className="bg-white border border-[#E7EEF2] rounded-lg overflow-hidden">
         <table className="min-w-full text-sm">
-          <thead className="border-b border-gray-100 bg-gray-50">
+          <thead className="border-b border-[#E7EEF2] bg-[#F7FAFC]">
             <tr>
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wide">Name</th>
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wide">Slug</th>
@@ -52,9 +52,9 @@ export default async function OffersPage() {
               <th className="py-3 px-4"></th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-[#E7EEF2]">
             {offers.map((offer) => (
-              <tr key={offer.id} className="hover:bg-gray-50">
+              <tr key={offer.id} className="hover:bg-[#F7FAFC]">
                 <td className="py-3 px-4 font-medium text-gray-900">{offer.name}</td>
                 <td className="py-3 px-4 text-gray-500 font-mono text-xs">/go/{offer.slug}</td>
                 <td className="py-3 px-4 text-gray-500 capitalize">{offer.category}</td>
@@ -70,7 +70,7 @@ export default async function OffersPage() {
                 <td className="py-3 px-4">
                   <Link
                     href={`/admin/offers/${offer.id}/edit`}
-                    className="text-brand-600 hover:underline text-xs font-medium"
+                    className="text-brand-500 hover:underline text-xs font-medium"
                   >
                     Edit
                   </Link>
@@ -81,7 +81,7 @@ export default async function OffersPage() {
               <tr>
                 <td colSpan={7} className="py-8 text-center text-gray-400 text-sm">
                   No offers yet.{' '}
-                  <Link href="/admin/offers/new" className="text-brand-600 hover:underline">
+                  <Link href="/admin/offers/new" className="text-brand-500 hover:underline">
                     Create your first offer
                   </Link>
                 </td>

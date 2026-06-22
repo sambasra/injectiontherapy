@@ -28,7 +28,7 @@ const facts = [
 
 export default function GlutathionePage() {
   return (
-    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-gray-600">Home</Link>
         <span className="mx-2">/</span>
@@ -39,7 +39,7 @@ export default function GlutathionePage() {
 
       <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal text-[#172026] mb-4">
             Glutathione Injections: What the Evidence Shows
           </h1>
           <p className="text-lg text-gray-500 mb-2">Last updated: June 2025</p>
@@ -54,7 +54,7 @@ export default function GlutathionePage() {
               supporting detoxification.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">Why Injections Instead of Oral?</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">Why Injections Instead of Oral?</h2>
             <p>
               Oral glutathione is largely broken down in the digestive tract before reaching the
               bloodstream. Injection delivery bypasses this, achieving higher plasma levels.
@@ -62,7 +62,7 @@ export default function GlutathionePage() {
               in healthy individuals is still under study.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">What the Evidence Shows</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">What the Evidence Shows</h2>
             <p>
               Evidence is strongest for glutathione in medical contexts (certain poisonings, some
               chemotherapy protocols). For wellness applications — energy, skin brightening, general
@@ -70,7 +70,7 @@ export default function GlutathionePage() {
               experience and patient-reported outcomes rather than large clinical trials.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">Cost</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">Cost</h2>
             <p>
               IV glutathione infusions at wellness clinics typically cost $75–$200 per session.
               At-home injection programs (subcutaneous or IM) through telehealth are generally
@@ -92,12 +92,12 @@ export default function GlutathionePage() {
 
         <aside className="mt-8 lg:mt-0 space-y-6">
           <QuickFactsBox facts={facts} title="Glutathione Quick Facts" />
-          <div className="bg-gray-50 border border-gray-200 rounded-[10px] p-5">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
             <h3 className="font-semibold text-gray-800 mb-3 text-sm">Related Injection Types</h3>
             <ul className="space-y-2">
-              <li><Link href="/b12-injections/" className="text-sm text-brand-600 hover:underline">B12 Injections</Link></li>
-              <li><Link href="/nad-injections/" className="text-sm text-brand-600 hover:underline">NAD+ Injections</Link></li>
-              <li><Link href="/lipotropic-injections/" className="text-sm text-brand-600 hover:underline">Lipotropic Injections</Link></li>
+              <li><Link href="/b12-injections/" className="text-sm text-brand-500 hover:underline">B12 Injections</Link></li>
+              <li><Link href="/nad-injections/" className="text-sm text-brand-500 hover:underline">NAD+ Injections</Link></li>
+              <li><Link href="/lipotropic-injections/" className="text-sm text-brand-500 hover:underline">Lipotropic Injections</Link></li>
             </ul>
           </div>
         </aside>

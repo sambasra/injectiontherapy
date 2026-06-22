@@ -42,16 +42,16 @@ export default async function ClicksPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Click Log</h1>
+      <h1 className="text-2xl font-medium text-[#172026] mb-6">Click Log</h1>
 
       <div className="flex flex-wrap gap-3 mb-4 text-sm">
-        <a href="/admin/clicks" className="px-3 py-1.5 rounded-full border border-gray-200 hover:border-brand-300 text-gray-600">
+        <a href="/admin/clicks" className="px-3 py-1.5 rounded border border-[#E7EEF2] hover:border-brand-200 text-gray-600">
           All
         </a>
-        <a href="/admin/clicks?bot=false" className="px-3 py-1.5 rounded-full border border-gray-200 hover:border-brand-300 text-gray-600">
+        <a href="/admin/clicks?bot=false" className="px-3 py-1.5 rounded border border-[#E7EEF2] hover:border-brand-200 text-gray-600">
           Human only
         </a>
-        <a href="/admin/clicks?bot=true" className="px-3 py-1.5 rounded-full border border-gray-200 hover:border-brand-300 text-gray-600">
+        <a href="/admin/clicks?bot=true" className="px-3 py-1.5 rounded border border-[#E7EEF2] hover:border-brand-200 text-gray-600">
           Bots only
         </a>
       </div>
@@ -62,12 +62,12 @@ export default async function ClicksPage({
         {totalPages > 1 && (
           <div className="flex gap-2 mt-4 text-sm">
             {pageNum > 1 && (
-              <a href={`/admin/clicks?page=${pageNum - 1}`} className="px-3 py-1.5 border border-gray-200 rounded-lg hover:border-brand-300">
+              <a href={`/admin/clicks?page=${pageNum - 1}`} className="px-3 py-1.5 border border-gray-200 rounded-lg hover:border-brand-200">
                 ← Prev
               </a>
             )}
             {pageNum < totalPages && (
-              <a href={`/admin/clicks?page=${pageNum + 1}`} className="px-3 py-1.5 border border-gray-200 rounded-lg hover:border-brand-300">
+              <a href={`/admin/clicks?page=${pageNum + 1}`} className="px-3 py-1.5 border border-gray-200 rounded-lg hover:border-brand-200">
                 Next →
               </a>
             )}

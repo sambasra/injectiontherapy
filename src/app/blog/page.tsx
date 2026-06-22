@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-gray-600">Home</Link>
         <span className="mx-2">/</span>
@@ -23,7 +23,7 @@ export default function BlogPage() {
         the research shows. New articles published regularly.
       </p>
 
-      <div className="bg-gray-50 border border-gray-200 rounded-[10px] p-10 text-center text-gray-500">
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-10 text-center text-gray-500">
         <div className="text-4xl mb-4">📝</div>
         <h2 className="text-lg font-semibold text-gray-700 mb-2">Articles Coming Soon</h2>
         <p className="text-sm max-w-md mx-auto">
@@ -31,10 +31,10 @@ export default function BlogPage() {
           therapy topics. Check back soon, or explore our current category pages:
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Link href="/b12-injections/" className="text-sm text-brand-600 hover:underline">B12 Injections</Link>
-          <Link href="/glp1-injections/" className="text-sm text-brand-600 hover:underline">GLP-1 Injections</Link>
-          <Link href="/nad-injections/" className="text-sm text-brand-600 hover:underline">NAD+ Injections</Link>
-          <Link href="/injection-types/" className="text-sm text-brand-600 hover:underline">All Injection Types</Link>
+          <Link href="/b12-injections/" className="text-sm text-brand-500 hover:underline">B12 Injections</Link>
+          <Link href="/glp1-injections/" className="text-sm text-brand-500 hover:underline">GLP-1 Injections</Link>
+          <Link href="/nad-injections/" className="text-sm text-brand-500 hover:underline">NAD+ Injections</Link>
+          <Link href="/injection-types/" className="text-sm text-brand-500 hover:underline">All Injection Types</Link>
         </div>
       </div>
     </div>

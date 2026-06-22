@@ -70,7 +70,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Dashboard</h1>
+      <h1 className="text-2xl font-medium text-[#172026] mb-6">Dashboard</h1>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <StatCard label="Clicks Today" value={data.clicksToday} color="blue" />

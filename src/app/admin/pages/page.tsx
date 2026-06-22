@@ -26,11 +26,11 @@ export default async function PagesPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Pages</h1>
+      <h1 className="text-2xl font-medium text-[#172026] mb-6">Pages</h1>
 
-      <div className="bg-white border border-gray-200 rounded-[10px] overflow-hidden">
+      <div className="bg-white border border-[#E7EEF2] rounded-lg overflow-hidden">
         <table className="min-w-full text-sm">
-          <thead className="border-b border-gray-100 bg-gray-50">
+          <thead className="border-b border-[#E7EEF2] bg-[#F7FAFC]">
             <tr>
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase">Title</th>
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase">URL</th>
@@ -41,11 +41,11 @@ export default async function PagesPage() {
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase">Updated</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-[#E7EEF2]">
             {pages.map((page) => {
               const hasSources = Array.isArray(page.citedSources) && (page.citedSources as unknown[]).length > 0
               return (
-                <tr key={page.id} className="hover:bg-gray-50">
+                <tr key={page.id} className="hover:bg-[#F7FAFC]">
                   <td className="py-3 px-4 font-medium text-gray-900">{page.title}</td>
                   <td className="py-3 px-4 text-gray-500 text-xs font-mono">{page.url}</td>
                   <td className="py-3 px-4 text-gray-500 capitalize text-xs">{page.pageType.replace('_', ' ')}</td>

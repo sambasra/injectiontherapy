@@ -54,7 +54,7 @@ const facts = [
 
 export default function NADInjectionsPage() {
   return (
-    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       <nav className="text-sm text-gray-400 mb-6">
         <Link href="/" className="hover:text-gray-600">Home</Link>
         <span className="mx-2">/</span>
@@ -65,7 +65,7 @@ export default function NADInjectionsPage() {
 
       <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl font-normal text-[#172026] mb-4">
             NAD+ Injections: What the Research Shows, What It Costs, and What to Expect
           </h1>
           <p className="text-lg text-gray-500 mb-2">Last updated: June 2025</p>
@@ -79,7 +79,7 @@ export default function NADInjectionsPage() {
               of the evidence. This page tries to close that gap.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">What Is NAD+ and Why Does It Matter?</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">What Is NAD+ and Why Does It Matter?</h2>
             <p>
               NAD+ (nicotinamide adenine dinucleotide) is a coenzyme present in every cell of the
               body. It plays a central role in converting food into cellular energy (ATP production),
@@ -97,7 +97,7 @@ export default function NADInjectionsPage() {
               intervention.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">What the Evidence Currently Shows</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">What the Evidence Currently Shows</h2>
             <p>
               It is important to distinguish between what the research demonstrates versus what is
               being marketed:
@@ -113,14 +113,14 @@ export default function NADInjectionsPage() {
               supports. Discuss your expectations honestly with a provider.
             </p>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">NAD+ Injection Cost Breakdown</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">NAD+ Injection Cost Breakdown</h2>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
               <li><strong>In-clinic IV infusions:</strong> $300–$1,000+ per session, often sold in packages. Sessions typically run 2–4 hours.</li>
               <li><strong>At-home subcutaneous programs:</strong> $100–$300/month through telehealth providers, including provider evaluation and shipped supplies.</li>
               <li><strong>Oral NAD+ precursors (NMN/NR):</strong> $30–$80/month as supplements — no prescription required, but bioavailability compared to injection is not established.</li>
             </ul>
 
-            <h2 className="text-xl font-bold text-gray-900 pt-2">What to Ask Your Provider</h2>
+            <h2 className="text-xl font-medium text-[#172026] pt-2">What to Ask Your Provider</h2>
             <ul className="list-disc pl-5 space-y-1 text-gray-600">
               <li>What protocol are you recommending, and why that dose/frequency?</li>
               <li>What outcomes should I realistically expect, and over what timeline?</li>
@@ -144,12 +144,12 @@ export default function NADInjectionsPage() {
 
         <aside className="mt-8 lg:mt-0 space-y-6">
           <QuickFactsBox facts={facts} title="NAD+ Quick Facts" />
-          <div className="bg-gray-50 border border-gray-200 rounded-[10px] p-5">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-5">
             <h3 className="font-semibold text-gray-800 mb-3 text-sm">Related Injection Types</h3>
             <ul className="space-y-2">
-              <li><Link href="/b12-injections/" className="text-sm text-brand-600 hover:underline">B12 Injections</Link></li>
-              <li><Link href="/sermorelin-injections/" className="text-sm text-brand-600 hover:underline">Sermorelin</Link></li>
-              <li><Link href="/glutathione-injections/" className="text-sm text-brand-600 hover:underline">Glutathione Injections</Link></li>
+              <li><Link href="/b12-injections/" className="text-sm text-brand-500 hover:underline">B12 Injections</Link></li>
+              <li><Link href="/sermorelin-injections/" className="text-sm text-brand-500 hover:underline">Sermorelin</Link></li>
+              <li><Link href="/glutathione-injections/" className="text-sm text-brand-500 hover:underline">Glutathione Injections</Link></li>
             </ul>
           </div>
         </aside>

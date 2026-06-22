@@ -37,13 +37,13 @@ export default async function ConversionsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Conversions</h1>
+      <h1 className="text-2xl font-medium text-[#172026] mb-6">Conversions</h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
         {['pending', 'approved', 'rejected', 'paid'].map((status) => {
           const stat = totals.find((t) => t.status === status)
           return (
-            <div key={status} className={`border rounded-[10px] p-4 ${statusColors[status]} bg-opacity-30`}>
+            <div key={status} className={`border rounded-lg p-4 ${statusColors[status]} bg-opacity-30`}>
               <p className="text-xs font-semibold uppercase tracking-wide opacity-70 mb-1 capitalize">{status}</p>
               <p className="text-2xl font-bold">{stat?._count.id ?? 0}</p>
               <p className="text-xs opacity-60">{formatCurrency(stat?._sum.payoutAmount ?? 0)}</p>
@@ -67,7 +67,7 @@ export default async function ConversionsPage() {
                   <th className="text-left py-2 text-xs font-semibold text-gray-400 uppercase">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody className="divide-y divide-[#E7EEF2]">
                 {conversions.map((conv) => (
                   <tr key={conv.id}>
                     <td className="py-2 pr-4 text-gray-500 whitespace-nowrap">{formatDate(conv.createdAt)}</td>

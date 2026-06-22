@@ -83,89 +83,89 @@ export default function OfferForm({ initial, siteId }: OfferFormProps) {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Offer Name *</label>
+          <label className="block text-sm font-medium text-[#172026] mb-1">Offer Name *</label>
           <input
             type="text"
             required
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+            className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Slug * (used in /go/slug)</label>
+          <label className="block text-sm font-medium text-[#172026] mb-1">Slug * (used in /go/slug)</label>
           <input
             type="text"
             required
             value={form.slug}
             onChange={(e) => setForm({ ...form, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') })}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm font-mono focus:ring-2 focus:ring-brand-400 focus:outline-none"
+            className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+          <label className="block text-sm font-medium text-[#172026] mb-1">Category</label>
           <input
             type="text"
             value={form.category}
             onChange={(e) => setForm({ ...form, category: e.target.value })}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+            className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Brand</label>
+          <label className="block text-sm font-medium text-[#172026] mb-1">Brand</label>
           <input
             type="text"
             value={form.brand}
             onChange={(e) => setForm({ ...form, brand: e.target.value })}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+            className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Destination URL *</label>
+        <label className="block text-sm font-medium text-[#172026] mb-1">Destination URL *</label>
         <input
           type="url"
           required
           value={form.destinationUrl}
           onChange={(e) => setForm({ ...form, destinationUrl: e.target.value })}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+          className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           placeholder="https://..."
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Fallback URL (if paused)</label>
+        <label className="block text-sm font-medium text-[#172026] mb-1">Fallback URL (if paused)</label>
         <input
           type="url"
           value={form.fallbackUrl}
           onChange={(e) => setForm({ ...form, fallbackUrl: e.target.value })}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+          className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           placeholder="/injection-types/"
         />
       </div>
 
       <div className="grid grid-cols-3 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Payout Amount (USD)</label>
+          <label className="block text-sm font-medium text-[#172026] mb-1">Payout Amount (USD)</label>
           <input
             type="number"
             step="0.01"
             min="0"
             value={form.payoutAmount}
             onChange={(e) => setForm({ ...form, payoutAmount: e.target.value })}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+            className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+          <label className="block text-sm font-medium text-[#172026] mb-1">Status</label>
           <select
             value={form.status}
             onChange={(e) => setForm({ ...form, status: e.target.value })}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+            className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           >
             <option value="active">Active</option>
             <option value="paused">Paused</option>
@@ -174,12 +174,12 @@ export default function OfferForm({ initial, siteId }: OfferFormProps) {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">SubID Param Name</label>
+          <label className="block text-sm font-medium text-[#172026] mb-1">SubID Param Name</label>
           <input
             type="text"
             value={form.subIdParamName}
             onChange={(e) => setForm({ ...form, subIdParamName: e.target.value })}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm font-mono focus:ring-2 focus:ring-brand-400 focus:outline-none"
+            className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
           />
         </div>
       </div>
@@ -198,12 +198,12 @@ export default function OfferForm({ initial, siteId }: OfferFormProps) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+        <label className="block text-sm font-medium text-[#172026] mb-1">Notes</label>
         <textarea
           rows={3}
           value={form.notes}
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none"
+          className="w-full bg-[#F7FAFC] border border-[#E7EEF2] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
         />
       </div>
 
@@ -211,7 +211,7 @@ export default function OfferForm({ initial, siteId }: OfferFormProps) {
         <button
           type="submit"
           disabled={saving}
-          className="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors disabled:opacity-50"
+          className="bg-brand-500 hover:bg-brand-600 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors disabled:opacity-50"
         >
           {saving ? 'Saving...' : isEdit ? 'Update Offer' : 'Create Offer'}
         </button>

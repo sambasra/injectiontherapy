@@ -9,12 +9,12 @@ export default function Header() {
   const [moreOpen, setMoreOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
+    <header className="sticky top-0 z-50 bg-white border-b border-[#E7EEF2]">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-brand-700 text-lg tracking-tight">
-            <span className="text-teal-600">Injection</span>Therapy.org
+          <Link href="/" className="flex items-center gap-1 font-semibold text-[#172026] text-lg tracking-tight">
+            <span className="text-brand-500">Injection</span>Therapy.org
           </Link>
 
           {/* Desktop nav */}
@@ -24,7 +24,7 @@ export default function Header() {
                 <div key={item.label} className="relative">
                   <button
                     onClick={() => setMoreOpen((v) => !v)}
-                    className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-700 rounded-md hover:bg-gray-50 flex items-center gap-1"
+                    className="px-3 py-2 text-sm font-medium text-[#172026] hover:text-brand-500 rounded flex items-center gap-1 transition-colors"
                   >
                     {item.label}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,12 +32,12 @@ export default function Header() {
                     </svg>
                   </button>
                   {moreOpen && (
-                    <div className="absolute top-full right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
+                    <div className="absolute top-full right-0 mt-1 w-48 bg-white rounded-lg border border-[#E7EEF2] py-1 z-50">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-4 py-2 text-sm text-gray-600 hover:text-brand-700 hover:bg-gray-50"
+                          className="block px-4 py-2 text-sm text-[#172026] hover:text-brand-500 hover:bg-[#F7FAFC] transition-colors"
                           onClick={() => setMoreOpen(false)}
                         >
                           {child.label}
@@ -50,7 +50,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-700 rounded-md hover:bg-gray-50"
+                  className="px-3 py-2 text-sm font-medium text-[#172026] hover:text-brand-500 rounded transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -60,7 +60,7 @@ export default function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden p-2 rounded-md text-gray-600 hover:bg-gray-50"
+            className="lg:hidden p-2 rounded text-[#172026] hover:bg-[#F7FAFC] transition-colors"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle navigation"
           >
@@ -77,7 +77,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
+        <div className="lg:hidden border-t border-[#E7EEF2] bg-white px-4 py-3 space-y-1">
           {mainNav.map((item) =>
             item.children ? (
               <div key={item.label}>
@@ -86,7 +86,7 @@ export default function Header() {
                   <Link
                     key={child.href}
                     href={child.href}
-                    className="block px-5 py-2 text-sm text-gray-600 hover:text-brand-700"
+                    className="block px-5 py-2 text-sm text-[#172026] hover:text-brand-500"
                     onClick={() => setMobileOpen(false)}
                   >
                     {child.label}
@@ -97,7 +97,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-brand-700 rounded-md hover:bg-gray-50"
+                className="block px-3 py-2 text-sm font-medium text-[#172026] hover:text-brand-500 rounded hover:bg-[#F7FAFC]"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}

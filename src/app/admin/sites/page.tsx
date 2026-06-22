@@ -22,11 +22,11 @@ export default async function SitesPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Sites</h1>
+      <h1 className="text-2xl font-medium text-[#172026] mb-6">Sites</h1>
 
-      <div className="bg-white border border-gray-200 rounded-[10px] overflow-hidden">
+      <div className="bg-white border border-[#E7EEF2] rounded-lg overflow-hidden">
         <table className="min-w-full text-sm">
-          <thead className="border-b border-gray-100 bg-gray-50">
+          <thead className="border-b border-[#E7EEF2] bg-[#F7FAFC]">
             <tr>
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase">Name</th>
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase">Domain</th>
@@ -38,7 +38,7 @@ export default async function SitesPage() {
               <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase">Created</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-[#E7EEF2]">
             {sites.map((site) => (
               <tr key={site.id}>
                 <td className="py-3 px-4 font-medium text-gray-900">{site.name}</td>

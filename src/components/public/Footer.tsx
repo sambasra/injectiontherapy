@@ -5,32 +5,32 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-900 text-gray-400 mt-20">
-      {/* Medical disclaimer — always present */}
-      <div className="bg-gray-800 border-b border-gray-700">
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-4">
+    <footer className="bg-[#172026] text-gray-400 mt-20">
+      {/* Medical disclaimer */}
+      <div className="border-b border-white/10">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-4">
           <p className="text-xs leading-relaxed text-gray-400">
             <strong className="text-gray-300">Medical Disclaimer:</strong> This website is for educational
             purposes only and does not provide medical advice. Always consult a qualified healthcare
             provider before starting any injection therapy or treatment program. Some links on this site
             may be affiliate links — we may earn a commission if you choose to purchase through them.{' '}
-            <Link href="/medical-disclaimer/" className="underline hover:text-gray-200">
+            <Link href="/medical-disclaimer/" className="underline hover:text-gray-200 transition-colors">
               Full Medical Disclaimer
             </Link>
             {' | '}
-            <Link href="/affiliate-disclosure/" className="underline hover:text-gray-200">
+            <Link href="/affiliate-disclosure/" className="underline hover:text-gray-200 transition-colors">
               Affiliate Disclosure
             </Link>
           </p>
         </div>
       </div>
 
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-12">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="font-bold text-white text-lg mb-3">
-              <span className="text-teal-400">Injection</span>Therapy.org
+            <div className="font-semibold text-white text-lg mb-3">
+              <span className="text-brand-400">Injection</span>Therapy.org
             </div>
             <p className="text-sm leading-relaxed text-gray-400">
               An educational resource for injection therapy information, programs, and costs.
@@ -81,7 +81,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-gray-500">
             &copy; {year} InjectionTherapy.org. All rights reserved.
           </p>
