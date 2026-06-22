@@ -1,0 +1,2 @@
+-- This file exists so Railway knows migrations are managed via prisma db push
+-- Run: npx prisma db push after setting DATABASE_URL in Railway env vars
