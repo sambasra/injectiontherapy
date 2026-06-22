@@ -2,94 +2,55 @@ import Link from 'next/link'
 import { footerNav } from '@/data/navigation'
 
 export default function Footer() {
-  const year = new Date().getFullYear()
-
   return (
-    <footer className="bg-[#172026] text-gray-400 mt-20">
-      {/* Medical disclaimer */}
-      <div className="border-b border-white/10">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-4">
-          <p className="text-xs leading-relaxed text-gray-400">
-            <strong className="text-gray-300">Medical Disclaimer:</strong> This website is for educational
-            purposes only and does not provide medical advice. Always consult a qualified healthcare
-            provider before starting any injection therapy or treatment program. Some links on this site
-            may be affiliate links — we may earn a commission if you choose to purchase through them.{' '}
-            <Link href="/medical-disclaimer/" className="underline hover:text-gray-200 transition-colors">
-              Full Medical Disclaimer
+    <footer className="bg-[#172026] text-white">
+      <div className="site-shell py-12 sm:py-16">
+        <div className="grid gap-10 border-b border-white/15 pb-12 md:grid-cols-[1.2fr_repeat(3,1fr)]">
+          <div className="max-w-[360px]">
+            <Link href="/" className="text-xl font-semibold text-white no-underline">
+              InjectionTherapy<span className="text-[#73d4c8]">.org</span>
             </Link>
-            {' | '}
-            <Link href="/affiliate-disclosure/" className="underline hover:text-gray-200 transition-colors">
-              Affiliate Disclosure
-            </Link>
-          </p>
-        </div>
-      </div>
-
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="font-semibold text-white text-lg mb-3">
-              <span className="text-brand-400">Injection</span>Therapy.org
-            </div>
-            <p className="text-sm leading-relaxed text-gray-400">
-              An educational resource for injection therapy information, programs, and costs.
-              Not a medical provider.
+            <p className="mt-4 text-sm leading-6 text-white/65">
+              Independent educational guides to injection therapies, evidence, access, safety questions, and costs.
             </p>
+            <p className="mt-4 text-sm font-medium text-white/90">Not a healthcare provider.</p>
           </div>
 
-          {/* Categories */}
-          <div>
-            <h3 className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">Injection Types</h3>
-            <ul className="space-y-2">
-              {footerNav.categories.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterColumn title="Injection types" links={footerNav.categories} />
+          <FooterColumn title="About" links={footerNav.company} />
+          <FooterColumn title="Legal" links={footerNav.legal} />
+        </div>
 
-          {/* Company */}
-          <div>
-            <h3 className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">Company</h3>
-            <ul className="space-y-2">
-              {footerNav.company.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-4">Legal</h3>
-            <ul className="space-y-2">
-              {footerNav.legal.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <div className="grid gap-6 py-8 text-xs leading-5 text-white/55 md:grid-cols-[1fr_auto] md:items-end">
+          <p className="max-w-[850px]">
+            <strong className="font-semibold text-white/80">Medical disclaimer:</strong> Content is for educational purposes only and is not medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional. Some links may be affiliate links; compensation does not change the price you pay.
+          </p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
+            <Link href="/medical-disclaimer/" className="footer-link">Medical disclaimer</Link>
+            <Link href="/affiliate-disclosure/" className="footer-link">Affiliate disclosure</Link>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-gray-500">
-            &copy; {year} InjectionTherapy.org. All rights reserved.
-          </p>
-          <p className="text-xs text-gray-500">
-            Educational purposes only. Not medical advice.
-          </p>
+        <div className="flex flex-col gap-2 border-t border-white/15 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+          <span>© {new Date().getFullYear()} InjectionTherapy.org</span>
+          <span>Evidence before treatment.</span>
         </div>
       </div>
     </footer>
+  )
+}
+
+function FooterColumn({ title, links }: { title: string; links: { href: string; label: string }[] }) {
+  return (
+    <div>
+      <h3 className="text-sm font-semibold text-white">{title}</h3>
+      <ul className="mt-4 space-y-3">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href} className="footer-link">{link.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
