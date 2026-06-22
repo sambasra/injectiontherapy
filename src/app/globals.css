@@ -1,29 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --bg: #ffffff;
+  --surface: #f6f6f1;
+  --lime: #eefab3;
+  --text: #000000;
+  --muted: #555555;
+  --subtle: #888888;
+  --border: #e0e0d8;
+  --grad-a: #bde6af;
+  --grad-b: #599bd1;
+  --gradient: linear-gradient(135deg, #bde6af 0%, #599bd1 100%);
   --max-content: 1200px;
   --max-prose: 780px;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Roboto', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #172026;
-  background: #F7FAFC;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
 }
 
-.prose-content {
-  max-width: var(--max-prose);
+.prose-content { max-width: var(--max-prose); }
+
+/* Gradient text utility */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient bg utility */
+.gradient-bg {
+  background: var(--gradient);
 }
