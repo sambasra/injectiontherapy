@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [],
   },
+  // Prisma needs this for Vercel serverless output
+  serverExternalPackages: ['@prisma/client', 'prisma'],
   async headers() {
     return [
       {
