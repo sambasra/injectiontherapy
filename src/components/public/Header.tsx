@@ -2,101 +2,91 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { mainNav } from '@/data/navigation'
+
+const navigation = [
+  { label: 'Injection types', href: '/injection-types/' },
+  { label: 'Evidence guide', href: '/#evidence' },
+  { label: 'Safety checklist', href: '/#questions' },
+  { label: 'About', href: '/about/' },
+  { label: 'Articles', href: '/blog/' },
+]
+
+function Mark() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 42 42" fill="none" className="h-9 w-9 shrink-0">
+      <rect x="1" y="1" width="40" height="40" rx="8" fill="#E9F7F5" stroke="#A9D9D4" />
+      <path d="M9 23h7l4-9 6 17 4-10h4" stroke="#087E8B" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header style={{
-      position: 'sticky', top: 0, zIndex: 50,
-      background: 'rgba(247,250,252,0.93)',
-      backdropFilter: 'blur(10px)',
-      borderBottom: '1px solid #E4EDF1',
-    }}>
-      <div style={{ maxWidth: 1220, margin: '0 auto', padding: '0 1.25rem' }}>
-        <div style={{ minHeight: 76, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
+    <header className="site-header">
+      <div className="bg-[#172026] text-white">
+        <div className="site-shell flex min-h-9 items-center justify-between gap-4 py-2 text-xs text-white/75">
+          <span>Independent education about injection therapy</span>
+          <span className="hidden sm:inline">Not a clinic. Not personal medical advice.</span>
+        </div>
+      </div>
 
-          {/* Brand */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.875rem', fontWeight: 500, color: '#172026', textDecoration: 'none' }}>
-            <svg
-              viewBox="0 0 64 64" fill="none"
-              style={{ width: 40, height: 40, borderRadius: 8, padding: 7, color: '#087E8B', background: 'rgba(8,126,139,0.1)', border: '1px solid rgba(8,126,139,0.2)', flexShrink: 0 }}
-            >
-              <rect x="6" y="6" width="52" height="52" rx="12" stroke="currentColor" strokeWidth="3" />
-              <path d="M12 35H22L28 22L35 42L41 30H52" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span>
-              InjectionTherapy.org
-              <small style={{ display: 'block', color: '#61707A', fontSize: 12, fontWeight: 400 }}>Medical injection therapy guides</small>
+      <div className="bg-white">
+        <div className="site-shell flex min-h-[72px] items-center justify-between gap-5">
+          <Link href="/" className="flex min-w-0 items-center gap-3 text-[#172026] no-underline" onClick={() => setMobileOpen(false)}>
+            <Mark />
+            <span className="min-w-0 text-lg font-semibold leading-none sm:text-xl">
+              InjectionTherapy<span className="text-[#087e8b]">.org</span>
+              <small className="mt-1 hidden text-xs font-normal text-[#61707a] sm:block">Evidence before treatment</small>
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav style={{ display: 'none', gap: '1.25rem', color: '#61707A', fontSize: 14 }} className="header-nav">
-            {mainNav.map((item) =>
-              item.children ? null : (
-                <Link key={item.href} href={item.href} style={{ color: 'inherit', textDecoration: 'none' }}
-                  onMouseEnter={e => (e.currentTarget.style.color = '#172026')}
-                  onMouseLeave={e => (e.currentTarget.style.color = '#61707A')}>
-                  {item.label}
-                </Link>
-              )
-            )}
+          <nav aria-label="Main navigation" className="hidden items-center gap-7 text-sm text-[#43525a] lg:flex">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href} className="header-link">{item.label}</Link>
+            ))}
           </nav>
 
-          {/* Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Link href="/injection-types/"
-              className="hidden sm:inline-flex"
-              style={{ minHeight: 44, alignItems: 'center', gap: '0.5rem', padding: '0 0.875rem', borderRadius: 8, border: '1px solid #D8E3E8', background: '#fff', color: '#172026', fontSize: 14, fontWeight: 500, textDecoration: 'none', display: 'inline-flex' }}>
-              <i className="fa-regular fa-table-columns" style={{ fontSize: 13 }}></i> Compare
-            </Link>
-            <Link href="/b12-injections/"
-              style={{ minHeight: 44, alignItems: 'center', gap: '0.5rem', padding: '0 0.875rem', borderRadius: 8, border: '1px solid #087E8B', background: '#087E8B', color: '#fff', fontSize: 14, fontWeight: 500, textDecoration: 'none', display: 'inline-flex' }}>
-              <i className="fa-regular fa-star" style={{ fontSize: 13 }}></i> Best Picks
+          <div className="flex items-center gap-2">
+            <Link href="/injection-types/" className="desktop-compare-button button button-primary min-h-10 px-4">
+              Compare guides
             </Link>
             <button
-              onClick={() => setMobileOpen(v => !v)}
-              style={{ minHeight: 44, width: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 8, border: '1px solid #D8E3E8', background: '#fff', cursor: 'pointer' }}
-              className="lg:hidden"
-              aria-label="Toggle menu"
+              type="button"
+              className="icon-button lg:hidden"
+              onClick={() => setMobileOpen((open) => !open)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
-              <svg style={{ width: 18, height: 18, color: '#172026' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileOpen
-                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+                {mobileOpen ? (
+                  <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                ) : (
+                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                )}
               </svg>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div style={{ borderTop: '1px solid #E4EDF1', background: '#fff', padding: '0.75rem 1.25rem' }}>
-          {mainNav.map((item) =>
-            item.children ? (
-              <div key={item.label}>
-                <div style={{ padding: '0.5rem 0.75rem', fontSize: 11, fontWeight: 500, color: '#85929A', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{item.label}</div>
-                {item.children.map(child => (
-                  <Link key={child.href} href={child.href} onClick={() => setMobileOpen(false)}
-                    style={{ display: 'block', padding: '0.5rem 1.25rem', fontSize: 14, color: '#172026', textDecoration: 'none' }}>
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}
-                style={{ display: 'block', padding: '0.5rem 0.75rem', fontSize: 14, color: '#172026', textDecoration: 'none', borderRadius: 8 }}>
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-[#dce5e8] bg-white lg:hidden">
+          <div className="site-shell grid py-3">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="mobile-nav-link">
                 {item.label}
+                <span aria-hidden="true">→</span>
               </Link>
-            )
-          )}
-        </div>
+            ))}
+            <Link href="/injection-types/" onClick={() => setMobileOpen(false)} className="button button-primary mt-3 sm:hidden">
+              Compare guides
+            </Link>
+          </div>
+        </nav>
       )}
-
-      <style>{`.header-nav { display: none; } @media (min-width: 1024px) { .header-nav { display: flex !important; } }`}</style>
     </header>
   )
 }

@@ -1,422 +1,395 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Injection Therapy Guide: B12, GLP-1, NAD & More',
+  title: 'Injection Therapy Guide: Evidence, Costs & Safety',
   description:
-    'Compare B12, GLP-1, NAD+, Sermorelin, Glutathione and Lipotropic injection programs. Educational reviews, cost comparisons and provider guides.',
+    'Understand B12, GLP-1, NAD+, Sermorelin, Glutathione, Lipotropic, and Testosterone injections before comparing treatment programs.',
   alternates: { canonical: '/' },
 }
 
-const s = {
-  container: { maxWidth: 1220, margin: '0 auto', padding: '0 1.25rem' } as React.CSSProperties,
-  card: { background: '#fff', border: '1px solid #D8E3E8', borderRadius: 8 } as React.CSSProperties,
-  chip: (color: 'teal' | 'indigo' | 'coral' | 'gray') => {
-    const map = {
-      teal:   { color: '#087E8B', background: 'rgba(8,126,139,0.10)' },
-      indigo: { color: '#334EAC', background: 'rgba(51,78,172,0.10)' },
-      coral:  { color: '#E45A44', background: 'rgba(228,90,68,0.12)' },
-      gray:   { color: '#61707A', background: '#F1F6F8' },
-    }
-    return {
-      display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
-      fontSize: 13, padding: '0.375rem 0.625rem', borderRadius: 8, fontWeight: 500,
-      ...map[color],
-    } as React.CSSProperties
+const treatments = [
+  {
+    href: '/b12-injections/',
+    name: 'B12 injections',
+    label: 'Established use',
+    tone: 'strong',
+    description: 'A well-established treatment for diagnosed vitamin B12 deficiency and related absorption problems.',
+    detail: 'Usually guided by symptoms, medical history, and blood testing.',
   },
-  btn: {
-    primary: { display: 'inline-flex', alignItems: 'center', gap: '0.5rem', minHeight: 44, padding: '0 1.125rem', borderRadius: 8, background: '#087E8B', color: '#fff', border: '1px solid #087E8B', fontSize: 14, fontWeight: 500, textDecoration: 'none', cursor: 'pointer' } as React.CSSProperties,
-    secondary: { display: 'inline-flex', alignItems: 'center', gap: '0.5rem', minHeight: 44, padding: '0 1.125rem', borderRadius: 8, background: '#fff', color: '#172026', border: '1px solid #D8E3E8', fontSize: 14, fontWeight: 500, textDecoration: 'none', cursor: 'pointer' } as React.CSSProperties,
+  {
+    href: '/glp1-injections/',
+    name: 'GLP-1 medications',
+    label: 'Prescription treatment',
+    tone: 'strong',
+    description: 'Evidence-based prescription options for diabetes and chronic weight management in eligible patients.',
+    detail: 'Requires screening, a prescription, dose monitoring, and ongoing care.',
   },
-  h2: { margin: 0, fontSize: 'clamp(22px,3vw,24px)', lineHeight: 1.3, fontWeight: 500, color: '#172026' } as React.CSSProperties,
-  h3: { margin: 0, fontSize: 18, lineHeight: 1.4, fontWeight: 500, color: '#172026' } as React.CSSProperties,
-  p:  { margin: 0, color: '#61707A', fontSize: 14 } as React.CSSProperties,
-  section: { padding: '1.5rem 0 0' } as React.CSSProperties,
+  {
+    href: '/testosterone-injections/',
+    name: 'Testosterone therapy',
+    label: 'Diagnosis required',
+    tone: 'specific',
+    description: 'A hormone treatment for clinically confirmed hypogonadism, not a general-purpose wellness injection.',
+    detail: 'Diagnosis and laboratory monitoring are essential.',
+  },
+  {
+    href: '/sermorelin-injections/',
+    name: 'Sermorelin',
+    label: 'Condition specific',
+    tone: 'specific',
+    description: 'A growth hormone-releasing peptide with narrower medical uses and variable clinic protocols.',
+    detail: 'Ask why it is being recommended and what outcomes will be monitored.',
+  },
+  {
+    href: '/nad-injections/',
+    name: 'NAD+ injections',
+    label: 'Emerging evidence',
+    tone: 'emerging',
+    description: 'Promoted for energy, recovery, and longevity, but human evidence for many claims remains limited.',
+    detail: 'Treat broad anti-aging promises with caution.',
+  },
+  {
+    href: '/glutathione-injections/',
+    name: 'Glutathione injections',
+    label: 'Limited evidence',
+    tone: 'emerging',
+    description: 'An antioxidant treatment marketed for several wellness and cosmetic goals with uneven supporting evidence.',
+    detail: 'Benefits, route, product quality, and risks need careful review.',
+  },
+  {
+    href: '/lipotropic-injections/',
+    name: 'Lipotropic injections',
+    label: 'Adjunctive use',
+    tone: 'emerging',
+    description: 'Often sold alongside weight management programs, without strong evidence as a standalone treatment.',
+    detail: 'A credible provider should not promise independent fat loss.',
+  },
+]
+
+const faqs = [
+  {
+    question: 'How do I know whether an injection therapy is appropriate for me?',
+    answer:
+      'Start with a licensed healthcare professional who can review your symptoms, diagnoses, medications, laboratory results, and treatment goals. A website or sales representative cannot determine whether a therapy is appropriate for an individual.',
+  },
+  {
+    question: 'Are online injection programs legitimate?',
+    answer:
+      'Some telehealth programs provide legitimate medical care. Look for a named licensed clinician, a real medical intake, clear pharmacy information, transparent pricing, follow-up care, and an easy way to report side effects. Avoid services that skip evaluation or guarantee results.',
+  },
+  {
+    question: 'What is the difference between FDA-approved and compounded medication?',
+    answer:
+      'FDA-approved products have been reviewed for safety, effectiveness, and manufacturing quality for specific uses. Compounded drugs can meet individual clinical needs but are not FDA-approved as finished products. Your provider should explain why a compounded option is being considered and identify the dispensing pharmacy.',
+  },
+  {
+    question: 'Does InjectionTherapy.org recommend a specific treatment?',
+    answer:
+      'No. This site provides educational comparisons and links to sources. It does not diagnose conditions, prescribe medication, or recommend a treatment for a specific person.',
+  },
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+}
+
+function ArrowIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-5 w-5 shrink-0">
+      <path d="M4 10h11M11 6l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="mt-0.5 h-5 w-5 shrink-0 text-[#087e8b]">
+      <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.5" />
+      <path d="m6.5 10 2.1 2.1 4.9-4.9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
 }
 
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section style={{ padding: '2rem 0 1.5rem' }}>
-        <div style={{ ...s.container, display: 'grid', gap: '1.25rem', alignItems: 'start' }} className="hero-grid">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-          {/* Left */}
-          <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: 12, color: '#61707A', background: '#fff', border: '1px solid #D8E3E8', padding: '0.375rem 0.75rem', borderRadius: 999, marginBottom: '1rem' }}>
-              <i className="fa-regular fa-circle-check" style={{ color: '#087E8B' }}></i>
-              Research-based educational content
-            </div>
-            <h1 style={{ margin: 0, fontSize: 'clamp(30px,4vw,40px)', lineHeight: 1.2, fontWeight: 400, color: '#172026', maxWidth: '16ch' }}>
-              Injection Therapy Programs That Are Worth Knowing About
+      <section className="home-hero">
+        <Image
+          src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1800&q=85"
+          alt="A clinical laboratory where medical testing and research are performed"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="home-hero-overlay" />
+        <div className="site-shell relative z-10 flex min-h-[500px] items-end pb-8 pt-12 sm:min-h-[520px]">
+          <div className="max-w-[780px] text-white">
+            <p className="mb-3 text-sm font-semibold uppercase">Independent treatment education</p>
+            <h1 className="max-w-[15ch] text-[40px] font-normal leading-[1.05] sm:text-[52px] lg:text-[56px]">
+              Understand injection therapy before choosing a program.
             </h1>
-            <p style={{ ...s.p, marginTop: '1rem', maxWidth: '62ch' }}>
-              Compare B12, GLP-1, NAD+, Sermorelin, Glutathione, and Lipotropic injection programs. We explain what each does, what the evidence says, typical costs, and how to find a qualified provider.
+            <p className="mt-4 max-w-[670px] text-base leading-7 text-white/90 sm:text-lg">
+              Compare what each therapy is used for, how strong the evidence is, what it may cost, and which questions belong in a provider consultation.
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1.25rem' }}>
-              <Link href="/injection-types/" style={s.btn.primary}>
-                <i className="fa-regular fa-star" style={{ fontSize: 13 }}></i> See All Types
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <Link href="#guides" className="button button-light">
+                Compare injection types <ArrowIcon />
               </Link>
-              <Link href="/glp1-injections/" style={s.btn.secondary}>
-                <i className="fa-regular fa-table-columns" style={{ fontSize: 13 }}></i> GLP-1 Guide
+              <Link href="#questions" className="button button-ghost-light">
+                Provider safety checklist
               </Link>
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
-              <span style={s.chip('teal')}><i className="fa-regular fa-shield-heart"></i> Trust-first content</span>
-              <span style={s.chip('indigo')}><i className="fa-solid fa-laptop-medical"></i> Medical education</span>
-              <span style={s.chip('coral')}><i className="fa-regular fa-circle-info"></i> FTC disclosed</span>
-            </div>
-
-            {/* Disclosure */}
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', padding: '0.875rem 1rem', marginTop: '1.25rem', background: 'rgba(51,78,172,0.07)', border: '1px solid #D8E3E8', borderRadius: 8 }}>
-              <i className="fa-regular fa-circle-info" style={{ color: '#334EAC', marginTop: 2, flexShrink: 0 }}></i>
-              <div>
-                <strong style={{ fontSize: 14, color: '#172026' }}>Affiliate disclosure:</strong>
-                <p style={{ ...s.p, marginTop: '0.25rem' }}>
-                  Some links earn a commission at no extra cost to you. Our educational content stays independent of partnerships.{' '}
-                  <Link href="/affiliate-disclosure/" style={{ color: '#334EAC', textDecoration: 'underline' }}>Full disclosure →</Link>
-                </p>
-              </div>
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80">
+              <span>Sources include FDA, NIH, and major clinical references</span>
+              <span>Educational use only</span>
             </div>
           </div>
-
-          {/* Right — featured card */}
-          <article style={{ ...s.card, overflow: 'hidden' }}>
-            <div style={{ aspectRatio: '4/3', background: '#E7EEF2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ textAlign: 'center', color: '#85929A' }}>
-                <i className="fa-regular fa-syringe" style={{ fontSize: 48, marginBottom: 12 }}></i>
-                <div style={{ fontSize: 14 }}>GLP-1 Weight Loss Programs</div>
-              </div>
-            </div>
-            <div style={{ padding: '1rem', display: 'grid', gap: '0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
-                <div>
-                  <span style={s.chip('teal')}><i className="fa-regular fa-award"></i> Editor&apos;s choice</span>
-                  <h3 style={{ ...s.h3, marginTop: '0.65rem' }}>Best GLP-1 program for medical weight management</h3>
-                  <p style={{ ...s.p, marginTop: '0.5rem' }}>Clinically supervised, telehealth-accessible, includes provider consultation and ongoing monitoring.</p>
-                </div>
-                <div style={{ minWidth: 84, textAlign: 'center', padding: '0.65rem 0.75rem', borderRadius: 8, background: 'rgba(8,126,139,0.1)', color: '#087E8B', flexShrink: 0 }}>
-                  <strong style={{ display: 'block', fontSize: 22, lineHeight: 1, fontWeight: 500 }}>9.4</strong>
-                  <span style={{ fontSize: 12, color: '#61707A' }}>overall</span>
-                </div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '0.5rem' }}>
-                {[['Safety', '9.5'], ['Efficacy', '9.3'], ['Value', '8.9']].map(([k, v]) => (
-                  <div key={k} style={{ ...s.card, padding: '0.75rem', textAlign: 'center' }}>
-                    <div style={{ fontSize: 12, color: '#85929A' }}>{k}</div>
-                    <div style={{ fontSize: 20, fontWeight: 500, color: '#172026' }}>{v}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <Link href="/go/glp1" rel="sponsored nofollow" style={s.btn.primary}>
-                  <i className="fa-regular fa-bag-shopping" style={{ fontSize: 13 }}></i> View Programs
-                </Link>
-                <Link href="/glp1-injections/" style={s.btn.secondary}>
-                  <i className="fa-regular fa-file-lines" style={{ fontSize: 13 }}></i> Read Guide
-                </Link>
-              </div>
-            </div>
-          </article>
         </div>
       </section>
 
-      {/* ── BROWSE CATEGORIES ────────────────────────────────────── */}
-      <section style={s.section}>
-        <div style={s.container}>
-          <div style={{ ...s.card, padding: '1rem', marginBottom: '1rem' }}>
-            <div style={{ display: 'grid', gap: '0.75rem' }} className="topbar-row">
+      <nav aria-label="Homepage sections" className="border-b border-[#dce5e8] bg-white">
+        <div className="site-shell grid grid-cols-2 sm:grid-cols-4">
+          {[
+            ['Treatment guides', '#guides'],
+            ['Evidence levels', '#evidence'],
+            ['Quick comparison', '#compare'],
+            ['Questions to ask', '#questions'],
+          ].map(([label, href]) => (
+            <Link key={href} href={href} className="section-link">
+              <span>{label}</span>
+              <ArrowIcon />
+            </Link>
+          ))}
+        </div>
+      </nav>
+
+      <section className="section-band bg-white" aria-labelledby="overview-heading">
+        <div className="site-shell editorial-grid">
+          <aside className="editorial-aside">
+            <p className="eyebrow">Start here</p>
+            <nav aria-label="On this page" className="mt-5 border-l border-[#cbd7db] pl-4 text-sm text-[#53636c]">
+              <a href="#guides">Treatment guides</a>
+              <a href="#evidence">How evidence differs</a>
+              <a href="#compare">Compare options</a>
+              <a href="#questions">Choose a provider</a>
+              <a href="#faq">Common questions</a>
+            </nav>
+          </aside>
+          <div className="max-w-[760px]">
+            <p className="eyebrow">A better starting point</p>
+            <h2 id="overview-heading" className="section-title mt-4">
+              The word “injection” describes a delivery method, not a level of evidence.
+            </h2>
+            <div className="mt-6 space-y-5 text-lg leading-8 text-[#53636c]">
+              <p>
+                Vitamin replacement, prescription weight management, hormone therapy, and wellness-clinic injections are not interchangeable. They involve different diagnoses, benefits, risks, and monitoring requirements.
+              </p>
+              <p>
+                This guide separates established medical uses from emerging claims so you can have a more useful conversation with a qualified provider.
+              </p>
+            </div>
+            <div className="mt-8 grid gap-5 border-t border-[#dce5e8] pt-7 sm:grid-cols-3">
               <div>
-                <h2 style={s.h2}>Browse by injection type</h2>
-                <p style={{ ...s.p, marginTop: '0.5rem' }}>Each injection category has its own evidence base, cost range, and provider type. Find the one relevant to your health question.</p>
+                <strong className="block text-2xl font-normal text-[#172026]">7 focused guides</strong>
+                <span className="mt-1 block text-sm text-[#61707a]">Organized by treatment type</span>
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.625rem', alignItems: 'center' }}>
-                <span style={s.chip('teal')}><i className="fa-regular fa-heart"></i> Deficiency treatment</span>
-                <span style={s.chip('indigo')}><i className="fa-solid fa-weight-scale"></i> Weight management</span>
-                <span style={s.chip('coral')}><i className="fa-regular fa-flask"></i> Wellness & longevity</span>
+              <div>
+                <strong className="block text-2xl font-normal text-[#172026]">Source led</strong>
+                <span className="mt-1 block text-sm text-[#61707a]">Claims linked to clinical references</span>
+              </div>
+              <div>
+                <strong className="block text-2xl font-normal text-[#172026]">No diagnosis</strong>
+                <span className="mt-1 block text-sm text-[#61707a]">Education, not personal medical advice</span>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div style={{ display: 'grid', gap: '1rem' }} className="category-grid">
-            {[
-              { href: '/b12-injections/',          icon: 'fa-regular fa-droplet',         title: 'B12 Injections',          desc: 'For deficiency, nerve health and energy. Well-studied and widely available.' },
-              { href: '/glp1-injections/',         icon: 'fa-solid fa-weight-scale',       title: 'GLP-1 Injections',        desc: 'FDA-approved for weight management. Requires medical supervision and prescription.' },
-              { href: '/nad-injections/',          icon: 'fa-regular fa-atom',             title: 'NAD+ Injections',         desc: 'Cellular energy and aging research. Early-stage evidence; emerging wellness use.' },
-              { href: '/sermorelin-injections/',   icon: 'fa-regular fa-chart-line-up',    title: 'Sermorelin',              desc: 'Growth hormone-releasing peptide. Used in anti-aging and hormone clinics.' },
-              { href: '/glutathione-injections/',  icon: 'fa-regular fa-shield-virus',     title: 'Glutathione',             desc: 'Antioxidant therapy used for skin brightening and detox support.' },
-              { href: '/lipotropic-injections/',   icon: 'fa-regular fa-fire-flame-curved',title: 'Lipotropic (MIC)',        desc: 'Fat-metabolism injections often paired with weight loss programs.' },
-              { href: '/testosterone-injections/', icon: 'fa-regular fa-person-running',   title: 'Testosterone',            desc: 'Hormone replacement therapy. Requires diagnosis and ongoing monitoring.' },
-            ].map(cat => (
-              <Link key={cat.href} href={cat.href} style={{ ...s.card, padding: '1rem', textDecoration: 'none', display: 'block' }}
-                className="category-card-link">
-                <div style={{ display: 'grid', gap: '0.5rem' }}>
-                  <i className={cat.icon} style={{ fontSize: 20, color: '#087E8B' }}></i>
-                  <h3 style={s.h3}>{cat.title}</h3>
-                  <p style={s.p}>{cat.desc}</p>
+      <section id="guides" className="section-band bg-[#f4f7f6]" aria-labelledby="guides-heading">
+        <div className="site-shell">
+          <div className="section-heading-row">
+            <div>
+              <p className="eyebrow">Treatment library</p>
+              <h2 id="guides-heading" className="section-title mt-4">Find the guide that matches your question.</h2>
+            </div>
+            <p className="max-w-[520px] text-base leading-7 text-[#61707a]">
+              Each guide covers common uses, evidence, safety considerations, access, and realistic cost ranges. None replaces a clinical evaluation.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {treatments.map((treatment, index) => (
+              <Link
+                key={treatment.href}
+                href={treatment.href}
+                className={`treatment-card ${index === 0 ? 'lg:col-span-2' : ''}`}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <span className={`evidence-label evidence-${treatment.tone}`}>{treatment.label}</span>
+                  <ArrowIcon />
                 </div>
+                <h3 className="mt-7 text-2xl font-normal text-[#172026]">{treatment.name}</h3>
+                <p className="mt-3 text-base leading-7 text-[#53636c]">{treatment.description}</p>
+                <p className="mt-6 border-t border-[#dce5e8] pt-4 text-sm leading-6 text-[#61707a]">{treatment.detail}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── TOP PICKS ────────────────────────────────────────────── */}
-      <section style={s.section} id="top-picks">
-        <div style={s.container}>
-          <div style={{ display: 'grid', gap: '0.75rem', marginBottom: '1rem' }}>
-            <h2 style={s.h2}>Top picks by injection category</h2>
-            <p style={{ ...s.p, maxWidth: '70ch' }}>Our most-read guides, ranked by evidence quality, provider access, and typical cost. These are starting points — not medical recommendations.</p>
-          </div>
-
-          <div style={{ display: 'grid', gap: '1rem' }} className="grid-3">
-            {/* B12 */}
-            <article style={{ ...s.card, overflow: 'hidden', display: 'grid' }}>
-              <div style={{ aspectRatio: '1/1', background: '#E7EEF2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <i className="fa-regular fa-droplet" style={{ fontSize: 48, color: '#087E8B', opacity: 0.6 }}></i>
-              </div>
-              <div style={{ padding: '1rem', display: 'grid', gap: '0.75rem' }}>
-                <span style={s.chip('teal')}><i className="fa-regular fa-award"></i> Best for deficiency</span>
-                <h3 style={s.h3}>B12 Injection Programs</h3>
-                <p style={s.p}>Well-established therapy for pernicious anemia, vegans and people with absorption issues. Get a blood test first.</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#C27700', fontSize: 13 }}>
-                  <i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star-half-stroke"></i>
-                  <span style={{ color: '#61707A' }}>4.8 evidence rating</span>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                  <div>
-                    <strong style={{ fontSize: 14, color: '#172026' }}>Pros</strong>
-                    <ul style={{ margin: '0.375rem 0 0', paddingLeft: '1rem', color: '#61707A', fontSize: 14 }}>
-                      <li>Strong evidence base</li><li>Affordable $20–$80/mo</li><li>Telehealth available</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <strong style={{ fontSize: 14, color: '#172026' }}>Cons</strong>
-                    <ul style={{ margin: '0.375rem 0 0', paddingLeft: '1rem', color: '#61707A', fontSize: 14 }}>
-                      <li>Narrow benefit if replete</li><li>Test first needed</li>
-                    </ul>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                  <Link href="/go/b12" rel="sponsored nofollow" style={s.btn.primary}>View deal</Link>
-                  <Link href="/b12-injections/" style={s.btn.secondary}>Read guide</Link>
-                </div>
-              </div>
-            </article>
-
-            {/* GLP-1 */}
-            <article style={{ ...s.card, overflow: 'hidden', display: 'grid' }}>
-              <div style={{ aspectRatio: '1/1', background: '#E7EEF2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <i className="fa-solid fa-weight-scale" style={{ fontSize: 48, color: '#334EAC', opacity: 0.6 }}></i>
-              </div>
-              <div style={{ padding: '1rem', display: 'grid', gap: '0.75rem' }}>
-                <span style={s.chip('indigo')}><i className="fa-solid fa-trophy"></i> Best for weight loss</span>
-                <h3 style={s.h3}>GLP-1 Telehealth Programs</h3>
-                <p style={s.p}>FDA-approved medications (semaglutide, tirzepatide) prescribed through telehealth. Strong clinical evidence for obesity management.</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#C27700', fontSize: 13 }}>
-                  <i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i>
-                  <span style={{ color: '#61707A' }}>5.0 evidence rating</span>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                  <div>
-                    <strong style={{ fontSize: 14, color: '#172026' }}>Pros</strong>
-                    <ul style={{ margin: '0.375rem 0 0', paddingLeft: '1rem', color: '#61707A', fontSize: 14 }}>
-                      <li>FDA-approved</li><li>Proven outcomes</li><li>Remote prescribing</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <strong style={{ fontSize: 14, color: '#172026' }}>Cons</strong>
-                    <ul style={{ margin: '0.375rem 0 0', paddingLeft: '1rem', color: '#61707A', fontSize: 14 }}>
-                      <li>Higher monthly cost</li><li>Ongoing Rx needed</li>
-                    </ul>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                  <Link href="/go/glp1" rel="sponsored nofollow" style={s.btn.primary}>Check price</Link>
-                  <Link href="/glp1-injections/" style={s.btn.secondary}>Read guide</Link>
-                </div>
-              </div>
-            </article>
-
-            {/* NAD+ */}
-            <article style={{ ...s.card, overflow: 'hidden', display: 'grid' }}>
-              <div style={{ aspectRatio: '1/1', background: '#E7EEF2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <i className="fa-regular fa-atom" style={{ fontSize: 48, color: '#E45A44', opacity: 0.6 }}></i>
-              </div>
-              <div style={{ padding: '1rem', display: 'grid', gap: '0.75rem' }}>
-                <span style={s.chip('coral')}><i className="fa-regular fa-wallet"></i> Best emerging therapy</span>
-                <h3 style={s.h3}>NAD+ Injection Programs</h3>
-                <p style={s.p}>Cellular energy coenzyme used in anti-aging and recovery clinics. Evidence is early-stage — understand limitations before starting.</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#C27700', fontSize: 13 }}>
-                  <i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-solid fa-star"></i><i className="fa-regular fa-star"></i>
-                  <span style={{ color: '#61707A' }}>4.2 evidence rating</span>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                  <div>
-                    <strong style={{ fontSize: 14, color: '#172026' }}>Pros</strong>
-                    <ul style={{ margin: '0.375rem 0 0', paddingLeft: '1rem', color: '#61707A', fontSize: 14 }}>
-                      <li>Growing research base</li><li>Wellness clinic access</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <strong style={{ fontSize: 14, color: '#172026' }}>Cons</strong>
-                    <ul style={{ margin: '0.375rem 0 0', paddingLeft: '1rem', color: '#61707A', fontSize: 14 }}>
-                      <li>Limited RCT data</li><li>Higher cost</li>
-                    </ul>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                  <Link href="/go/nad" rel="sponsored nofollow" style={s.btn.primary}>See offers</Link>
-                  <Link href="/nad-injections/" style={s.btn.secondary}>Read guide</Link>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* ── COMPARISON TABLE ─────────────────────────────────────── */}
-      <section style={s.section} id="comparison">
-        <div style={{ ...s.container, display: 'grid', gap: '1.25rem', alignItems: 'start' }} className="comparison-grid">
+      <section id="evidence" className="section-band bg-white" aria-labelledby="evidence-heading">
+        <div className="site-shell grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.78fr)] lg:gap-20">
           <div>
-            <div style={{ display: 'grid', gap: '0.75rem', marginBottom: '1rem' }}>
-              <h2 style={s.h2}>Side-by-side comparison</h2>
-              <p style={{ ...s.p, maxWidth: '70ch' }}>Quick reference for how the major injection therapy categories compare on evidence, cost, and access type.</p>
-            </div>
-            <div style={{ ...s.card, overflow: 'hidden' }}>
-              {/* Header */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 0.8fr 0.9fr 0.8fr 1fr', alignItems: 'center', padding: '0.9rem 1rem', background: '#F1F6F8', borderBottom: '1px solid #E4EDF1', gap: '0.75rem' }}>
-                {['Program', 'Rating', 'Best For', 'Rx Req.', 'Action'].map(h => (
-                  <span key={h} style={{ fontSize: 12, color: '#85929A', textTransform: 'uppercase', letterSpacing: '0.03em', fontWeight: 500 }}>{h}</span>
-                ))}
-              </div>
+            <p className="eyebrow">How we frame evidence</p>
+            <h2 id="evidence-heading" className="section-title mt-4 max-w-[760px]">
+              Strong claims need strong evidence.
+            </h2>
+            <p className="mt-6 max-w-[700px] text-lg leading-8 text-[#53636c]">
+              A therapy can be appropriate for one diagnosed condition and poorly supported for a broad wellness claim. We describe the use being discussed instead of assigning a misleading single score.
+            </p>
+
+            <div className="mt-9 divide-y divide-[#dce5e8] border-y border-[#dce5e8]">
               {[
-                { name: 'GLP-1 Programs',    desc: 'Weight management',       rating: '9.4', best: 'Obesity / BMI', rx: 'Yes', href: '/go/glp1',   guide: '/glp1-injections/', primary: true },
-                { name: 'B12 Programs',      desc: 'Deficiency treatment',    rating: '8.8', best: 'Deficiency',    rx: 'Yes', href: '/go/b12',    guide: '/b12-injections/' },
-                { name: 'Sermorelin',        desc: 'Hormone optimization',    rating: '8.3', best: 'Anti-aging',    rx: 'Yes', href: '/go/sermorelin', guide: '/sermorelin-injections/' },
-                { name: 'NAD+ Programs',     desc: 'Cellular energy',         rating: '7.9', best: 'Wellness',      rx: 'No',  href: '/go/nad',    guide: '/nad-injections/' },
-                { name: 'Lipotropic (MIC)',  desc: 'Fat metabolism',          rating: '7.5', best: 'Weight support',rx: 'No',  href: '/go/lipotropic', guide: '/lipotropic-injections/' },
-              ].map((row, i) => (
-                <div key={row.name} style={{ display: 'grid', gridTemplateColumns: '1.6fr 0.8fr 0.9fr 0.8fr 1fr', alignItems: 'center', padding: '0.875rem 1rem', borderBottom: i < 4 ? '1px solid #E4EDF1' : 'none', gap: '0.75rem' }}>
+                ['01', 'Established or approved use', 'Supported by clinical guidance, regulatory review, or a substantial evidence base for a defined use.'],
+                ['02', 'Condition-specific use', 'May be reasonable in a narrower clinical situation when diagnosis and monitoring are appropriate.'],
+                ['03', 'Emerging or limited evidence', 'Early research or inconsistent findings. Marketing may be more confident than the available human evidence.'],
+              ].map(([number, title, description]) => (
+                <div key={number} className="grid gap-3 py-6 sm:grid-cols-[56px_1fr]">
+                  <span className="text-sm font-semibold text-[#087e8b]">{number}</span>
                   <div>
-                    <div style={{ fontWeight: 500, fontSize: 14, color: '#172026' }}>{row.name}</div>
-                    <div style={{ fontSize: 12, color: '#85929A', marginTop: 2 }}>{row.desc}</div>
-                  </div>
-                  <span style={{ fontSize: 18, fontWeight: 500, color: '#087E8B' }}>{row.rating}</span>
-                  <span style={{ fontSize: 13, color: '#61707A' }}>{row.best}</span>
-                  <span style={{ fontSize: 13, color: '#61707A' }}>{row.rx}</span>
-                  <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    <Link href={row.href} rel="sponsored nofollow" style={{ ...s.btn.primary, minHeight: 36, padding: '0 0.75rem', fontSize: 13 }}>
-                      View deal
-                    </Link>
+                    <h3 className="text-xl font-normal text-[#172026]">{title}</h3>
+                    <p className="mt-2 leading-7 text-[#61707a]">{description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Sidebar */}
-          <aside style={{ ...s.card, padding: '1rem' }}>
-            <h3 style={s.h3}>How we rate programs</h3>
-            <p style={{ ...s.p, marginTop: '0.5rem' }}>Ratings reflect clinical evidence strength, real-world provider access, cost-to-benefit, and transparency of the program — not commission size.</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.625rem', marginTop: '1rem' }}>
-              <span style={s.chip('teal')}><i className="fa-regular fa-square-check"></i> Evidence quality</span>
-              <span style={s.chip('teal')}><i className="fa-regular fa-square-check"></i> Cost transparency</span>
-              <span style={s.chip('indigo')}><i className="fa-regular fa-square-check"></i> Provider access</span>
-              <span style={s.chip('coral')}><i className="fa-regular fa-triangle-exclamation"></i> Caveats noted</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', padding: '0.875rem 1rem', marginTop: '1rem', background: 'rgba(51,78,172,0.07)', border: '1px solid #D8E3E8', borderRadius: 8 }}>
-              <i className="fa-regular fa-stethoscope" style={{ color: '#334EAC', marginTop: 2, flexShrink: 0 }}></i>
-              <div>
-                <strong style={{ fontSize: 14, color: '#172026' }}>Medical note:</strong>
-                <p style={{ ...s.p, marginTop: '0.25rem' }}>These are educational ratings. Always consult a qualified healthcare provider before starting any injection program.</p>
-              </div>
-            </div>
-          </aside>
+          <figure className="evidence-figure">
+            <Image
+              src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=85"
+              alt="A patient receiving reassuring support during a healthcare conversation"
+              width={1600}
+              height={1067}
+              sizes="(min-width: 1024px) 38vw, 100vw"
+              className="aspect-[4/5] w-full object-cover"
+            />
+            <figcaption className="border-t border-white/20 bg-[#172026] p-6 text-white">
+              <p className="text-lg leading-7">The right decision depends on your diagnosis, goals, medications, and tolerance for risk.</p>
+              <p className="mt-2 text-sm text-white/70">That context belongs in a provider consultation.</p>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* ── EDITORIAL TRUST ──────────────────────────────────────── */}
-      <section style={s.section} id="editorial">
-        <div style={s.container}>
-          <div style={{ display: 'grid', gap: '0.75rem', marginBottom: '1rem' }}>
-            <h2 style={s.h2}>Editorial approach</h2>
-            <p style={{ ...s.p, maxWidth: '70ch' }}>We explain how programs are evaluated, how affiliate links work, and when you should consult a professional instead of relying on a website.</p>
+      <section id="compare" className="section-band bg-[#eef8f7]" aria-labelledby="compare-heading">
+        <div className="site-shell">
+          <p className="eyebrow">Quick comparison</p>
+          <div className="section-heading-row mt-4">
+            <h2 id="compare-heading" className="section-title">Compare the decision, not just the price.</h2>
+            <p className="max-w-[520px] text-base leading-7 text-[#53636c]">
+              Availability and cost change. These stable questions are more useful when evaluating any program.
+            </p>
           </div>
-          <div style={{ display: 'grid', gap: '1rem' }} className="grid-3">
+
+          <div className="comparison-table mt-10" role="table" aria-label="Injection therapy comparison questions">
+            <div className="comparison-row comparison-head" role="row">
+              <span role="columnheader">Treatment group</span>
+              <span role="columnheader">What should establish need?</span>
+              <span role="columnheader">What should care include?</span>
+            </div>
             {[
-              { chip: ['teal', 'fa-regular fa-shield-check', 'Editorial process'], title: 'How programs get shortlisted', body: 'We look at clinical evidence, provider licensing, cost transparency, and what the FDA and NIH say — not which program has the best commission rate.' },
-              { chip: ['indigo', 'fa-regular fa-circle-info', 'Disclosure'], title: 'How affiliate links work', body: 'If you click a link and enroll in a program, we may earn a commission. This never raises your cost and does not change our evaluation criteria.' },
-              { chip: ['coral', 'fa-regular fa-triangle-exclamation', 'Health reminder'], title: 'When to consult a professional', body: 'Injection therapy is a medical intervention. This site is for education — not diagnosis or treatment. Always work with a licensed provider.' },
-            ].map(({ chip: [color, icon, label], title, body }) => (
-              <article key={title} style={{ ...s.card, overflow: 'hidden' }}>
-                <div style={{ aspectRatio: '16/10', background: '#E7EEF2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <i className={icon} style={{ fontSize: 36, color: color === 'teal' ? '#087E8B' : color === 'indigo' ? '#334EAC' : '#E45A44', opacity: 0.5 }}></i>
-                </div>
-                <div style={{ padding: '1rem', display: 'grid', gap: '0.65rem' }}>
-                  <span style={s.chip(color as 'teal' | 'indigo' | 'coral' | 'gray')}><i className={icon}></i> {label}</span>
-                  <h3 style={s.h3}>{title}</h3>
-                  <p style={s.p}>{body}</p>
-                </div>
-              </article>
+              ['Vitamin replacement', 'Symptoms, history, and appropriate testing', 'Dose plan and follow-up based on the cause of deficiency'],
+              ['Prescription weight care', 'Eligibility, medical history, and contraindication screening', 'Prescription oversight, titration, side-effect support, and continuity'],
+              ['Hormone treatment', 'Symptoms plus repeat laboratory confirmation where appropriate', 'Ongoing labs, risk monitoring, and clear treatment targets'],
+              ['Wellness injections', 'A specific rationale supported by credible evidence', 'Transparent ingredients, sourcing, risks, costs, and stopping criteria'],
+            ].map((row) => (
+              <div key={row[0]} className="comparison-row" role="row">
+                {row.map((cell, index) => (
+                  <span key={cell} role="cell" data-label={index === 0 ? 'Treatment group' : index === 1 ? 'Establishing need' : 'Care should include'}>
+                    {cell}
+                  </span>
+                ))}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── NEWSLETTER ───────────────────────────────────────────── */}
-      <section style={s.section} id="newsletter">
-        <div style={s.container}>
-          <div style={{ ...s.card, background: '#F1F6F8', padding: '1.5rem', display: 'grid', gap: '1rem' }}>
-            <div>
-              <h2 style={s.h2}>Stay updated on injection therapy</h2>
-              <p style={{ ...s.p, marginTop: '0.5rem' }}>New program reviews, cost changes, and FDA updates — delivered to your inbox when it matters.</p>
-            </div>
-            <form style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-              <input
-                type="email"
-                placeholder="Enter your email for program updates"
-                aria-label="Email address"
-                style={{ flex: '1 1 260px', minHeight: 50, borderRadius: 8, border: '1px solid #D8E3E8', padding: '0 0.95rem', background: '#fff', color: '#172026', fontSize: 14 }}
-              />
-              <button type="submit" style={s.btn.primary}>
-                <i className="fa-regular fa-envelope" style={{ fontSize: 13 }}></i> Subscribe
-              </button>
-            </form>
-            <p style={{ ...s.p, fontSize: 12, color: '#85929A' }}>No spam. Unsubscribe any time. See our <Link href="/privacy/" style={{ color: '#334EAC', textDecoration: 'underline' }}>privacy policy</Link>.</p>
+      <section id="questions" className="section-band bg-white" aria-labelledby="questions-heading">
+        <div className="site-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div>
+            <p className="eyebrow">Provider checklist</p>
+            <h2 id="questions-heading" className="section-title mt-4">
+              A credible program should welcome practical questions.
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-[#53636c]">
+              Good care is easier to recognize when the clinician, medication source, monitoring plan, and total cost are visible before treatment begins.
+            </p>
+            <Link href="/injection-types/" className="text-link mt-7 inline-flex items-center gap-2">
+              Explore all treatment guides <ArrowIcon />
+            </Link>
+          </div>
+          <ul className="checklist">
+            {[
+              'Who is the licensed clinician responsible for my care?',
+              'What diagnosis or clinical finding supports this treatment?',
+              'Is the medication FDA-approved for this use, or is it compounded?',
+              'Which pharmacy dispenses it, and can I verify that pharmacy?',
+              'What side effects need urgent attention?',
+              'Which follow-up visits or laboratory tests are included?',
+              'What is the full monthly cost, including medication and monitoring?',
+              'What is the plan if the treatment does not help or I want to stop?',
+            ].map((item) => (
+              <li key={item}><CheckIcon /><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="faq" className="section-band bg-[#f4f7f6]" aria-labelledby="faq-heading">
+        <div className="site-shell grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+          <div>
+            <p className="eyebrow">Common questions</p>
+            <h2 id="faq-heading" className="section-title mt-4">Before you begin</h2>
+            <p className="mt-5 leading-7 text-[#61707a]">Clear answers matter more than a fast checkout when healthcare is involved.</p>
+          </div>
+          <div className="divide-y divide-[#cbd7db] border-y border-[#cbd7db]">
+            {faqs.map((item, index) => (
+              <details key={item.question} className="faq-item" open={index === 0}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── MOBILE NAV ───────────────────────────────────────────── */}
-      <nav style={{ position: 'sticky', bottom: 0, display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: '0.4rem', padding: '0.625rem', background: 'rgba(255,255,255,0.94)', backdropFilter: 'blur(10px)', borderTop: '1px solid #E4EDF1', marginTop: '1.5rem' }} className="lg:hidden" aria-label="Mobile navigation">
-        {[
-          { href: '/', icon: 'fa-solid fa-house', label: 'Home' },
-          { href: '/injection-types/', icon: 'fa-regular fa-star', label: 'Types' },
-          { href: '/b12-injections/', icon: 'fa-regular fa-droplet', label: 'B12' },
-          { href: '/glp1-injections/', icon: 'fa-solid fa-weight-scale', label: 'GLP-1' },
-          { href: '/blog/', icon: 'fa-regular fa-file-lines', label: 'Blog' },
-        ].map(item => (
-          <Link key={item.href} href={item.href} style={{ minHeight: 44, display: 'grid', placeItems: 'center', gap: '0.25rem', borderRadius: 8, color: '#61707A', textDecoration: 'none', fontSize: 12, gridTemplateRows: 'auto auto' }}>
-            <i className={item.icon} style={{ fontSize: 18 }}></i>
-            <span>{item.label}</span>
+      <section className="bg-[#087e8b] text-white">
+        <div className="site-shell grid gap-8 py-12 md:grid-cols-[1fr_auto] md:items-center md:py-16">
+          <div>
+            <p className="text-sm font-semibold uppercase text-white/80">Make the next conversation count</p>
+            <h2 className="mt-3 max-w-[780px] text-3xl font-normal leading-tight sm:text-4xl">
+              Start with the evidence, then take your questions to a qualified provider.
+            </h2>
+          </div>
+          <Link href="/injection-types/" className="button button-dark">
+            Compare the guides <ArrowIcon />
           </Link>
-        ))}
-      </nav>
-
-      <style>{`
-        @media (min-width: 768px) {
-          .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
-          .topbar-row { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
-          .comparison-grid { grid-template-columns: 1.2fr 0.8fr; }
-          .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
-        @media (min-width: 1100px) {
-          .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-          .category-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        }
-        .category-card-link:hover { border-color: rgba(8,126,139,0.4) !important; }
-      `}</style>
+        </div>
+      </section>
     </>
   )
 }
